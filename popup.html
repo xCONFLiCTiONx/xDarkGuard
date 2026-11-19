@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xDarkGuard</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body class="popup">
+  <header>
+    <div class="mark" aria-hidden="true">◐</div>
+    <div><h1>xDarkGuard</h1><p>Privacy-first dark mode</p></div>
+  </header>
+  
+  <div class="site-action-card">
+    <div class="card-header-row">
+      <div class="current-host-info">
+        <span class="host-label">Current site:</span>
+        <strong id="currentHost" class="host-name">Loading…</strong>
+      </div>
+      <div class="top-right-buttons">
+        <button id="addSiteBtn" class="btn btn-action" type="button" title="Add or remove site from Include/Exclude list">+ Include</button>
+        <button id="ignoreSiteBtn" class="btn btn-action btn-ignore-action" type="button" title="Completely ignore site in both modes">🚫 Ignore</button>
+      </div>
+    </div>
+  </div>
+
+  <label class="toggle-row" for="enabled">
+    <span>
+      <strong>Dark mode</strong>
+      <small id="siteHelp">For this site</small>
+    </span>
+    <input id="enabled" type="checkbox">
+  </label>
+
+  <label class="field-label" for="listMode">Site list mode</label>
+  <select id="listMode">
+    <option value="include">Include mode (only listed sites)</option>
+    <option value="exclude">Exclude mode (all except listed)</option>
+  </select>
+
+  <label class="field-label" for="mode">Rendering mode profile</label>
+  <div class="profile-chips" id="profileChips">
+    <button type="button" class="profile-chip" data-mode="filter+">Filter+</button>
+    <button type="button" class="profile-chip" data-mode="filter">Filter</button>
+    <button type="button" class="profile-chip" data-mode="dynamic">Dynamic</button>
+    <button type="button" class="profile-chip" data-mode="static">Static</button>
+  </div>
+  <select id="mode">
+    <option value="dynamic" selected>Dynamic (Default)</option>
+    <option value="filter+">Filter+</option>
+    <option value="filter">Filter</option>
+    <option value="static">Static</option>
+  </select>
+
+  <p id="status" role="status" aria-live="polite">Ready</p>
+  <footer>
+    <a href="options.html" target="_blank">Settings &amp; site list</a>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

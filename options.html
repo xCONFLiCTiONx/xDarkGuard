@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xDarkGuard Settings</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+  <main class="options">
+    <h1>xDarkGuard settings</h1>
+    <p>Smart, privacy-first dark mode browser extension.</p>
+
+    <div class="card">
+      <div class="form-row">
+        <label for="optListMode"><strong>Site list mode:</strong></label>
+        <select id="optListMode">
+          <option value="include">Include mode — only dark theme sites in your list</option>
+          <option value="exclude">Exclude mode — dark theme all sites except those in your list</option>
+        </select>
+        <small id="listModeDesc" style="color:#9ba4b4; margin-top:4px;">
+          Include mode: websites are light by default. When you add a site to the list, it will be dark themed.
+        </small>
+      </div>
+
+      <div class="form-row">
+        <label for="optDefaultMode"><strong>Default rendering mode:</strong></label>
+        <select id="optDefaultMode">
+          <option value="dynamic" selected>Dynamic (Default) — adaptive dark styling for containers and page elements</option>
+          <option value="filter+">Filter+ — inverted colors with media corrections</option>
+          <option value="filter">Filter — color inversion with basic media safeguards</option>
+          <option value="static">Static — consistent restrained dark colors</option>
+        </select>
+      </div>
+
+      <div class="form-row" style="margin-top: 12px; padding-top: 14px; border-top: 1px solid #2a303e;">
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="checkbox" id="optAutoDarkenBright" checked>
+          <span><strong>Auto-darken bright pages</strong></span>
+        </label>
+        <small style="color:#9ba4b4; margin-top:2px;">
+          Automatically check if a page is too bright and apply the default filter to protect your eyes (on by default).
+        </small>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;">Manage site list</h2>
+      <p id="listHeaderDesc">Sites currently in your list:</p>
+      
+      <form id="addSiteForm" class="input-group">
+        <input type="text" id="newSiteInput" placeholder="example.com" autocomplete="off" spellcheck="false" required>
+        <button type="submit" class="btn">Add site</button>
+      </form>
+
+      <ul id="siteList" class="site-list">
+        <li class="site-empty">No sites added yet.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;">Manage ignore list</h2>
+      <p>Sites in this list are completely ignored in both Include and Exclude modes (never dark themed and ignored by auto-darken):</p>
+
+      <form id="addIgnoreForm" class="input-group">
+        <input type="text" id="newIgnoreInput" placeholder="example.com" autocomplete="off" spellcheck="false" required>
+        <button type="submit" class="btn">Ignore site</button>
+      </form>
+
+      <ul id="ignoreListEl" class="site-list">
+        <li class="site-empty">No sites ignored yet.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0;">Export &amp; backup settings</h2>
+      <p style="margin-bottom: 14px;">Export your complete configuration, preferences, and site list as a JSON file, or restore them from a backup.</p>
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <button id="exportBtn" type="button" class="btn">Export settings (JSON)</button>
+        <button id="importBtn" type="button" class="btn">Import settings</button>
+        <input type="file" id="importFileInput" accept=".json,application/json" style="display: none;">
+        <span id="backupStatus" style="font-size: 13px; color: #a4beff;"></span>
+      </div>
+    </div>
+
+    <h2>Rendering modes reference</h2>
+    <ul>
+      <li><strong>Filter+:</strong> expanded inversion corrections for images, video, SVG, canvas, and backgrounds.</li>
+      <li><strong>Filter:</strong> inversion-based darkening with basic media safeguards.</li>
+      <li><strong>Dynamic:</strong> adaptive dark colors for layouts, surfaces, forms, and typography.</li>
+      <li><strong>Static:</strong> consistent, predictable stylesheet with minimal runtime adaptation.</li>
+    </ul>
+
+    <h2>Privacy principles</h2>
+    <ul>
+      <li>No analytics, telemetry, or tracking is included.</li>
+      <li>All preferences and site lists are stored locally in browser storage.</li>
+      <li>No browsing history is ever uploaded or collected.</li>
+      <li>No remote code execution.</li>
+    </ul>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
